@@ -1,0 +1,56 @@
+using System;
+
+class Vehicle
+{
+    public virtual void Start()
+    {
+        Console.WriteLine("Vehicle is starting");
+    }
+}
+
+class Car : Vehicle
+{
+    public sealed override void Start()
+    {
+        Console.WriteLine("Car is starting");
+    }
+}
+
+class Bike : Vehicle
+{
+    public override void Start()
+    {
+        Console.WriteLine("Bike is starting");
+    }
+}
+
+class Truck : Vehicle
+{
+    public new void Start()
+    {
+        Console.WriteLine("Truck is starting");
+    }
+}
+
+class SportsCar : Car
+{
+    
+}
+
+class Program
+{
+    static void Main()
+    {
+        Vehicle myCar = new Car();
+        myCar.Start();
+
+        Vehicle myBike = new Bike();
+        myBike.Start();
+
+        Vehicle myTruckVehicle = new Truck();
+        myTruckVehicle.Start();
+
+        Truck myTruck = new Truck();
+        myTruck.Start();
+    }
+}

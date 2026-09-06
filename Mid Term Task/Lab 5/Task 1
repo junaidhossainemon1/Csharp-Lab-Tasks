@@ -1,0 +1,206 @@
+using System;
+
+public enum AccountType
+{
+    Savings,
+    Current,
+    Premium
+}
+
+public struct Address
+{
+    public string City;
+    public string ZipCode;
+
+    public Address(string city, string zip)
+    {
+        City = city;
+        ZipCode = zip;
+    }
+}
+
+public class Account
+{
+    private const string BankName = "SmartBank";
+    private readonly string accountNumber;
+    private double balance;
+    private string ownerName;
+    private int? branchCode;
+
+    public Address UserAddress;
+    public AccountType Type;
+
+    public static int TotalAccounts;
+
+    public double Balance
+    {
+        get { return balance; }
+        set { balance = value; }
+    }
+
+    static Account()
+    {
+        TotalAccounts = 1000;
+    }
+
+    public Account() : this("Unknown", 0.0)
+    {
+    }
+
+    public Account(string name, double initialBalance)
+    {
+        ownerName = name;
+        balance = initialBalance;
+        TotalAccounts++;
+        accountNumber = "ACC" + TotalAccounts.ToString();
+        branchCode = null;
+    }
+
+    public Account(Account oldAccount)
+    {
+        ownerName = oldAccount.ownerName;
+        balance = oldAccount.balance;
+        accountNumber = oldAccount.accountNumber + "C";
+        UserAddress = oldAccount.UserAddress;
+    }
+
+    ~Account()
+    {
+        Console.WriteLine("");
+    }
+
+    public virtual void CalculateInterest()
+    {
+        Console.WriteLine("Base Account Interest: 0%");
+    }
+
+    public void Deposit(double amount)
+    {
+        balance = balance + amount;
+    }
+
+    public void Deposit(ref double amount, out bool isSuccess)
+    {
+        if (amount > 0)
+        {
+            balance = balance + amount;
+            isSuccess = true;
+            amount = 0;
+        }
+        else
+        {
+            isSuccess = false;
+        }
+    }
+
+    public void Deposit(params double[] amounts)
+    {
+        foreach (double a in amounts)
+        {
+            balance = balance + a;
+        }
+    }
+
+    public void ShowDetails()
+    {
+        int roundedBalance = (int)balance;
+        Console.WriteLine(ownerName + " has balance " + roundedBalance);
+    }
+}
+
+public class SavingsAccount : Account
+{
+    public SavingsAccount(string name, double balance) : base(name, balance)
+    {
+        Type = AccountType.Savings;
+    }
+
+    public override void CalculateInterest()
+    {
+        Console.WriteLine("Savings Account Interest: 4%");
+    }
+}
+
+public class PremiumSavings : SavingsAccount
+{
+    public PremiumSavings(string name, double balance) : base(name, balance)
+    {
+        Type = AccountType.Premium;
+    }
+
+    public sealed override void CalculateInterest()
+    {
+        Console.WriteLine("Premium Savings Interest: 7%");
+    }
+}
+
+public class CurrentAccount : Account
+{
+    public CurrentAccount(string name, double balance) : base(name, balance)
+    {
+        Type = AccountType.Current;
+    }
+
+    public new void CalculateInterest()
+    {
+        Console.WriteLine("Current Account Interest: 1%");
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Account acc1 = new SavingsAccount("Tariq", 5000.50);
+        acc1.UserAddress = new Address("Dhaka", "1212");
+
+        Account acc2 = new CurrentAccount("Hasan", 2000.00);
+        Account acc3 = new PremiumSavings("Rahim", 10000.00);
+        CurrentAccount acc4 = new CurrentAccount("Karim", 3000.00);
+
+        acc1.ShowDetails();
+
+        Console.WriteLine("\nPolymorphism and Method Hiding Outputs:");
+        acc1.CalculateInterest(); 
+        acc2.CalculateInterest(); 
+        acc3.CalculateInterest(); 
+        acc4.CalculateInterest(); 
+
+        double depositAmount = 1500.00;
+        bool successStatus;
+        acc1.Deposit(ref depositAmount, out successStatus);
+        acc1.Deposit(100.50, 200.25, 50.00);
+
+        Console.WriteLine("\nArray Traversals:");
+        string[] names = { "Tariq", "Hasan", "Rahim" };
+        Console.WriteLine("1D Array Length: " + names.Length);
+        foreach (string n in names)
+        {
+            Console.Write(n + " ");
+        }
+        Console.WriteLine();
+
+        int[,] grid = { { 1, 2, 3 }, { 4, 5, 6 } };
+        Console.WriteLine("2D Array Total Length: " + grid.Length);
+        Console.WriteLine("2D Array Row Length: " + grid.GetLength(0));
+        Console.WriteLine("2D Array Col Length: " + grid.GetLength(1));
+        foreach (int num in grid)
+        {
+            Console.Write(num + " ");
+        }
+        Console.WriteLine();
+
+        int[][] jagged = new int[2][];
+        jagged[0] = new int[] { 10, 20 };
+        jagged[1] = new int[] { 30, 40, 50 };
+        Console.WriteLine("Jagged Array Length: " + jagged.Length);
+        foreach (int[] row in jagged)
+        {
+            foreach (int val in row)
+            {
+                Console.Write(val + " ");
+            }
+        }
+        Console.WriteLine();
+    }
+}

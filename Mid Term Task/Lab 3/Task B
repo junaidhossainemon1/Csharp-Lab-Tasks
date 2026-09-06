@@ -1,0 +1,37 @@
+using System;
+
+class Employee
+{
+    public string ID { get; set; }
+    public string Name { get; set; }
+
+    public Employee(string id, string name)
+    {
+        ID = id;
+        Name = name;
+        Console.WriteLine("Employee Name: " + Name);
+        Console.WriteLine("Employee ID: " + ID);
+    }
+}
+
+class PermanentEmployee : Employee
+{
+    public double BasicSalary { get; set; }
+    public double Bonus { get; set; }
+
+    public PermanentEmployee(string id, string name, double basicSalary, double bonus) : base(id, name)
+    {
+        BasicSalary = basicSalary;
+        Bonus = bonus;
+        double totalSalary = BasicSalary + Bonus;
+        Console.WriteLine("Total Salary: " + totalSalary);
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        PermanentEmployee emp = new PermanentEmployee("E101", "Karim", 45000, 5000);
+    }
+}

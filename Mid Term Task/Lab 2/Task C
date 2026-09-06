@@ -1,0 +1,40 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Enter number of students: ");
+        int studentCount = int.Parse(Console.ReadLine());
+        
+        int[][] studentMarks = new int[studentCount][];
+        int highestTotal = -1;
+        int topStudentIndex = -1;
+        
+        for (int i = 0; i < studentCount; i++)
+        {
+            Console.Write("How many subjects for student " + (i + 1) + "? ");
+            int subjectCount = int.Parse(Console.ReadLine());
+            
+            studentMarks[i] = new int[subjectCount];
+            int currentTotal = 0;
+            
+            for (int j = 0; j < subjectCount; j++)
+            {
+                Console.Write("Enter marks for subject " + (j + 1) + ": ");
+                studentMarks[i][j] = int.Parse(Console.ReadLine());
+                currentTotal += studentMarks[i][j];
+            }
+            
+            Console.WriteLine("Total marks for student " + (i + 1) + ": " + currentTotal);
+            
+            if (currentTotal > highestTotal)
+            {
+                highestTotal = currentTotal;
+                topStudentIndex = i + 1;
+            }
+        }
+        
+        Console.WriteLine("Student " + topStudentIndex + " has the highest total marks: " + highestTotal);
+    }
+}
