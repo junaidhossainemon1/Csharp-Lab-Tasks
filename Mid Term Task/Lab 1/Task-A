@@ -1,0 +1,28 @@
+using System;
+
+class TaskA
+{
+    static void Main()
+    {
+        Console.Write("Enter first number: ");
+        int num1 = Convert.ToInt32(Console.ReadLine());
+        
+        Console.Write("Enter second number: ");
+        int num2 = Convert.ToInt32(Console.ReadLine());
+
+        int addition = num1 + num2;
+        int subtraction = num1 - num2;
+        int multiplication = num1 * num2;
+
+        Console.Write("Addition: " + addition + " Subtraction: " + subtraction + " Multiplication: " + multiplication + " Division: ");
+
+        if (num2 == 0)
+        {
+            Console.WriteLine("Cannot divide by zero");
+        }
+        else
+        {
+            Console.WriteLine(num1 / num2);
+        }
+    }
+}
