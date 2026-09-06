@@ -1,0 +1,35 @@
+..using System;
+
+class Person
+{
+    public string Name { get; set; }
+    public int Age { get; set; }
+
+    public Person(string name, int age)
+    {
+        Name = name;
+        Age = age;
+    }
+}
+
+class Student : Person
+{
+    public string StudentID { get; set; }
+
+    public Student(string name, int age, string studentId) : base(name, age)
+    {
+        StudentID = studentId;
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Student s1 = new Student("Rahim", 20, "20-12345-1");
+        
+        Console.WriteLine("Name: " + s1.Name);
+        Console.WriteLine("Age: " + s1.Age);
+        Console.WriteLine("Student ID: " + s1.StudentID);
+    }
+}
