@@ -1,0 +1,11 @@
+D:\Semester 6\C#\FinalLab-FormSubmission\FinalLab-FormSubmission\obj\Debug\FinalLab-FormSubmission.csproj.AssemblyReference.cache
+D:\Semester 6\C#\FinalLab-FormSubmission\FinalLab-FormSubmission\obj\Debug\FinalLab_FormSubmission.Form1.resources
+D:\Semester 6\C#\FinalLab-FormSubmission\FinalLab-FormSubmission\obj\Debug\FinalLab_FormSubmission.Properties.Resources.resources
+D:\Semester 6\C#\FinalLab-FormSubmission\FinalLab-FormSubmission\obj\Debug\FinalLab-FormSubmission.csproj.GenerateResource.cache
+D:\Semester 6\C#\FinalLab-FormSubmission\FinalLab-FormSubmission\obj\Debug\FinalLab-FormSubmission.csproj.CoreCompileInputs.cache
+D:\Semester 6\C#\FinalLab-FormSubmission\FinalLab-FormSubmission\bin\Debug\FinalLab-FormSubmission.exe.config
+D:\Semester 6\C#\FinalLab-FormSubmission\FinalLab-FormSubmission\bin\Debug\FinalLab-FormSubmission.exe
+D:\Semester 6\C#\FinalLab-FormSubmission\FinalLab-FormSubmission\bin\Debug\FinalLab-FormSubmission.pdb
+D:\Semester 6\C#\FinalLab-FormSubmission\FinalLab-FormSubmission\obj\Debug\FinalLab-FormSubmission.exe
+D:\Semester 6\C#\FinalLab-FormSubmission\FinalLab-FormSubmission\obj\Debug\FinalLab-FormSubmission.pdb
+D:\Semester 6\C#\FinalLab-FormSubmission\FinalLab-FormSubmission\obj\Debug\FinalLab-FormSubmission.exe.config
